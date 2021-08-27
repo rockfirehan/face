@@ -164,16 +164,22 @@ for test in testImages:
         faceDescriptorList = [m for m in faceDescriptor]
         faceDescriptorNdarray = np.asarray(faceDescriptorList, dtype=np.float64)
         faceDescriptorNdarray = faceDescriptorNdarray[np.newaxis, :]
+        
         #caculate distances between test image and enrolled image
         distances = np.linalg.norm(faceDescriptorsEnrolled - faceDescriptorNdarray, axis=1)
+        
         #find the most likely person's index
         argmin = np.argmin(distances)
+        
         # minimum distance
         minDistance = distances[argmin] 
+        
         # find the most likely person's name and full path
         label = index[argmin]
+        
         #the name of most look like person.
         celeb_name=index[argmin]
+        
         #the full path of most look like person image
         pathout=pathidx[argmin]
 ```
